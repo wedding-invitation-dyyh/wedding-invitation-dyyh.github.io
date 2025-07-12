@@ -2,47 +2,117 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>동연 ❤️ 영흔 결혼합니다</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Swiper 슬라이드 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
     <style>
+      /* 기본 스타일 */
       body {
         font-family: "Arial", sans-serif;
         background: #fffaf5;
         color: #333;
         margin: 0;
-        padding: 20px;
-        text-align: center;
+        padding: 0;
       }
+
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      #preloader img {
+        width: 60%;
+        max-width: 400px;
+        border-radius: 12px;
+      }
+
       .card {
-        max-width: 500px;
-        margin: 0 auto;
+        max-width: 600px;
+        margin: auto;
         background: white;
         padding: 30px;
         border-radius: 16px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
       }
+
       h1 {
         color: #b36b00;
         font-size: 24px;
         margin-bottom: 0;
       }
-      .names {
-        font-size: 20px;
-        margin: 10px 0;
+
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease-out;
+        visibility: hidden;
       }
-      .date {
-        font-size: 18px;
-        margin: 20px 0;
+
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: none;
+        visibility: visible;
       }
-      .location {
-        margin-top: 10px;
-        font-size: 16px;
-        color: #666;
+
+      iframe {
+        width: 100%;
+        border: none;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 300px;
+        margin-top: 20px;
+      }
+
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      /* 모바일 반응형 */
+      @media (max-width: 600px) {
+        .card {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
       }
     </style>
   </head>
+
   <body>
-    <div class="card">
+    <!-- 배경 음악 -->
+    <audio autoplay loop>
+      <source src="bgm.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- 프리로딩 -->
+    <div id="preloader">
+      <img src="preview.jpg" alt="미리보기 사진" />
+    </div>
+
+    <!-- 본문 시작 -->
+    <div class="card fade-in-section">
       <h1>💍 결혼합니다 💍</h1>
       <div class="names">동연 ❤️ 영흔</div>
       <div class="date">2026년 01월 24일 (토) 오후 1시 20분</div>
@@ -51,5 +121,78 @@
       </div>
       <p style="margin-top: 30px">소중한 당신을 초대합니다.</p>
     </div>
+
+    <!-- 갤러리 슬라이드 -->
+    <div class="card fade-in-section">
+      <h2>우리의 순간들</h2>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="photo1.jpg" /></div>
+          <div class="swiper-slide"><img src="photo2.jpg" /></div>
+          <div class="swiper-slide"><img src="photo3.jpg" /></div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+    <!-- 지도 -->
+    <div class="card fade-in-section">
+      <h2>오시는 길</h2>
+      <iframe
+        src="https://map.kakao.com/link/map/더링크호텔,37.5012748,126.882509"
+        width="100%"
+        height="300"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- 참석 여부 폼 -->
+    <div class="card fade-in-section">
+      <h2>참석 여부 전달</h2>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdXXXXX/viewform?embedded=true"
+        width="100%"
+        height="600"
+      >
+        로딩 중...
+      </iframe>
+    </div>
+
+    <!-- Swiper & JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+      // 프리로딩 제거
+      window.addEventListener("load", () => {
+        document.getElementById("preloader").style.display = "none";
+        document.body.style.overflow = "auto";
+      });
+
+      // 스크롤 시 등장
+      const faders = document.querySelectorAll(".fade-in-section");
+      const appearOptions = { threshold: 0.1 };
+      const appearOnScroll = new IntersectionObserver(function (
+        entries,
+        observer
+      ) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      appearOptions);
+      faders.forEach((fader) => {
+        appearOnScroll.observe(fader);
+      });
+
+      // Swiper
+      new Swiper(".swiper", {
+        pagination: { el: ".swiper-pagination" },
+        loop: true,
+        autoplay: { delay: 3000 },
+      });
+    </script>
   </body>
 </html>
