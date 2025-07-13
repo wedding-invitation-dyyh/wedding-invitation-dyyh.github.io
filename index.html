@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <title>동연 ❤️ 영흔 결혼합니다</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <style>
       body {
         font-family: "Arial", sans-serif;
@@ -132,7 +135,7 @@
         margin-top: 12px;
         border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       }
 
       .info-toggle {
@@ -149,8 +152,7 @@
       }
       .center-text {
         text-align: center;
-      }     
-
+      }
 
       .info-toggle:hover {
         background-color: #f7e0cc;
@@ -166,6 +168,19 @@
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease, padding 0.4s ease;
+      }
+      .copy-btn {
+        margin-left: 8px;
+        padding: 2px 8px;
+        font-size: 12px;
+        border: none;
+        border-radius: 6px;
+        background-color: #f7e0cc;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .copy-btn:hover {
+        background-color: #f0d4ba;
       }
 
       .info-content.open {
@@ -198,10 +213,11 @@
       <h1>💍 결혼합니다 💍</h1>
       <div class="names">동연 ❤️ 영흔</div>
       <div class="date">2026년 01월 24일 (토) 오후 1시 20분</div>
-      <div class="location">서울 구로구 경인로 610 더링크 호텔 3층 베일리 홀</div>
+      <div class="location">
+        서울 구로구 경인로 610 더링크 호텔 3층 베일리 홀
+      </div>
       <p style="margin-top: 30px">소중한 당신을 초대합니다.</p>
     </div>
-
 
     <div class="card fade-in-section">
       <h2>우리의 순간들</h2>
@@ -257,14 +273,6 @@
     <div class="card fade-in-section">
       <h2>마음 전하는 곳</h2>
       <div class="info-item">
-        <button class="info-toggle">👰 신부 도영흔</button>
-        <div class="info-content">
-          📞 010-7578-6721<br />
-          💳 우리은행 1002-045-494771 도영흔
-        </div>
-      </div>
-
-      <div class="info-item">
         <button class="info-toggle">🤵 신랑 김동연</button>
         <div class="info-content">
           📞 010-4669-3068<br />
@@ -273,14 +281,20 @@
       </div>
 
       <div class="info-item">
+        <button class="info-toggle">👰 신부 도영흔</button>
+        <div class="info-content">
+          📞 010-7578-6721<br />
+          💳 우리은행 <span class="copy-text">1002-045-494771 도영흔</span>
+          <button class="copy-btn">복사</button>
+        </div>
+      </div>
+
+      <div class="info-item">
         <button class="info-toggle">👨‍👦 신랑측 혼주</button>
         <div class="info-content">
           👨🏻 신랑 아버지 김철호<br />
           📞 010-8510-1046<br />
-          💳 농협 111-22-333444<br /><br />
-          👩🏻 신랑 어머니 김정숙<br />
-          📞 010-4284-3068<br />
-          💳 농협 111-22-333444
+          💳 하나 209-890801-92307
         </div>
       </div>
 
@@ -292,7 +306,7 @@
           💳 농협 111-22-333444<br /><br />
           👩🏻 신부 어머니 허선주<br />
           📞 010-3819-6721<br />
-          💳 농협 111-22-333444
+          💳 국민 615801-04-277124
         </div>
       </div>
     </div>
@@ -308,14 +322,18 @@
       // 스크롤 등장 효과
       const faders = document.querySelectorAll(".fade-in-section");
       const appearOptions = { threshold: 0.1 };
-      const appearOnScroll = new IntersectionObserver(function (entries, observer) {
+      const appearOnScroll = new IntersectionObserver(function (
+        entries,
+        observer
+      ) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
             observer.unobserve(entry.target);
           }
         });
-      }, appearOptions);
+      },
+      appearOptions);
       faders.forEach((fader) => appearOnScroll.observe(fader));
 
       // Swiper 슬라이드
@@ -345,14 +363,26 @@
       });
 
       // 부드러운 아코디언
-      document.querySelectorAll('.info-toggle').forEach(button => {
-        button.addEventListener('click', () => {
+      document.querySelectorAll(".info-toggle").forEach((button) => {
+        button.addEventListener("click", () => {
           const content = button.nextElementSibling;
-          const isOpen = content.classList.contains('open');
+          const isOpen = content.classList.contains("open");
 
-          document.querySelectorAll('.info-content').forEach(c => c.classList.remove('open'));
+          document
+            .querySelectorAll(".info-content")
+            .forEach((c) => c.classList.remove("open"));
 
-          if (!isOpen) content.classList.add('open');
+          if (!isOpen) content.classList.add("open");
+        });
+      });
+      // 복사 버튼 기능
+      document.querySelectorAll(".copy-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const text = btn.previousElementSibling.innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            btn.innerText = "복사됨!";
+            setTimeout(() => (btn.innerText = "복사"), 1500);
+          });
         });
       });
     </script>
