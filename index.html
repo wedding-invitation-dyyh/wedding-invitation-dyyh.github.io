@@ -4,13 +4,7 @@
     <meta charset="UTF-8" />
     <title>동연 ❤️ 영흔 결혼합니다</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Swiper 슬라이드 CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
       body {
         font-family: "Arial", sans-serif;
@@ -38,39 +32,6 @@
         max-width: 400px;
         border-radius: 12px;
       }
-      .info-item {
-        margin-top: 12px;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      }
-
-      .info-toggle {
-        width: 100%;
-        background: #fcefe5;
-        border: none;
-        padding: 14px 20px;
-        font-size: 16px;
-        text-align: left;
-        border-radius: 12px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s;
-      }
-
-      .info-toggle:hover {
-        background: #f7e0cc;
-      }
-
-      .info-content {
-        background: #fffaf5;
-        padding: 12px 20px;
-        display: none;
-        font-size: 15px;
-        line-height: 1.6;
-        border-top: 1px solid #eee;
-      }
-
 
       .card {
         max-width: 600px;
@@ -167,6 +128,51 @@
         cursor: pointer;
       }
 
+      .info-item {
+        margin-top: 12px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      }
+
+      .info-toggle {
+        width: 100%;
+        background: #fcefe5;
+        border: none;
+        padding: 14px 20px;
+        font-size: 16px;
+        text-align: center;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      .center-text {
+        text-align: center;
+      }     
+
+
+      .info-toggle:hover {
+        background-color: #f7e0cc;
+      }
+
+      .info-content {
+        background: #fffaf5;
+        padding: 0 20px;
+        font-size: 15px;
+        line-height: 1.6;
+        border-top: 1px solid #eee;
+
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+      }
+
+      .info-content.open {
+        padding: 12px 20px;
+        max-height: 200px;
+      }
+
       @media (max-width: 600px) {
         .card {
           padding: 20px;
@@ -180,18 +186,15 @@
   </head>
 
   <body>
-    <!-- 배경 음악 -->
     <audio autoplay loop>
       <source src="bgm.mp3" type="audio/mpeg" />
     </audio>
 
-    <!-- 프리로딩 -->
     <div id="preloader">
       <img src="preview.jpg" alt="미리보기 사진" />
     </div>
 
-    <!-- 인삿말 -->
-    <div class="card fade-in-section">
+    <div class="card fade-in-section center-text">
       <h1>💍 결혼합니다 💍</h1>
       <div class="names">동연 ❤️ 영흔</div>
       <div class="date">2026년 01월 24일 (토) 오후 1시 20분</div>
@@ -199,7 +202,7 @@
       <p style="margin-top: 30px">소중한 당신을 초대합니다.</p>
     </div>
 
-    <!-- 스와이프 갤러리 -->
+
     <div class="card fade-in-section">
       <h2>우리의 순간들</h2>
       <div class="swiper">
@@ -212,7 +215,6 @@
       </div>
     </div>
 
-    <!-- 퍼즐 갤러리 -->
     <div class="card fade-in-section">
       <h2>추억 퍼즐</h2>
       <div class="grid-gallery">
@@ -225,24 +227,21 @@
       </div>
     </div>
 
-    <!-- 모달 확대보기 -->
     <div id="imageModal" class="modal">
       <span class="modal-close">&times;</span>
       <img class="modal-content" id="modalImg" />
     </div>
 
-    <!-- 오시는 길 -->
     <div class="card fade-in-section">
       <h2>오시는 길</h2>
       <iframe
-        src="https://map.kakao.com/link/map/더링크호텔,37.5012748,126.882509"
+        src="https://map.naver.com/p/search/더링크호텔서울?c=15.00,0,0,0,dh"
         width="100%"
         height="300"
         allowfullscreen
       ></iframe>
     </div>
 
-    <!-- 참석 여부 -->
     <div class="card fade-in-section">
       <h2>참석 여부 전달</h2>
       <iframe
@@ -254,49 +253,51 @@
       </iframe>
     </div>
 
-    <!-- 연락처 및 계좌번호 -->
-    <!-- 연락처 및 계좌번호 (아코디언) -->
-<div class="card fade-in-section">
-  <h2>연락처 및 계좌번호</h2>
+    <!-- 연락처 및 계좌번호 (슬라이드 아코디언) -->
+    <div class="card fade-in-section">
+      <h2>연락처 및 계좌번호</h2>
+      <div class="info-item">
+        <button class="info-toggle">👰 신부 도영흔</button>
+        <div class="info-content">
+          📞 010-7578-6721<br />
+          💳 우리은행 1002-045-494771 도영흔
+        </div>
+      </div>
 
-  <div class="info-item">
-    <button class="info-toggle">👰 신부 이영흔</button>
-    <div class="info-content">
-      📞 010-9876-5432<br />
-      💳 신한은행 987654-32-109876
+      <div class="info-item">
+        <button class="info-toggle">🤵 신랑 김동연</button>
+        <div class="info-content">
+          📞 010-4669-3068<br />
+          💳 국민은행 943202-00-132949 김동연
+        </div>
+      </div>
+
+      <div class="info-item">
+        <button class="info-toggle">👨‍👦 신랑측 혼주</button>
+        <div class="info-content">
+          👨🏻 신랑 아버지 김철호<br />
+          📞 010-8510-1046<br />
+          💳 농협 111-22-333444<br /><br />
+          👩🏻 신랑 어머니 김정숙<br />
+          📞 010-4284-3068<br />
+          💳 농협 111-22-333444
+        </div>
+      </div>
+
+      <div class="info-item">
+        <button class="info-toggle">👩‍👧 신부측 혼주</button>
+        <div class="info-content">
+          👨🏻 신부 아버지 도회송<br />
+          📞 010-3534-6721<br />
+          💳 농협 111-22-333444<br /><br />
+          👩🏻 신부 어머니 허선주<br />
+          📞 010-3819-6721<br />
+          💳 농협 111-22-333444
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="info-item">
-    <button class="info-toggle">🤵 신랑 김동연</button>
-    <div class="info-content">
-      📞 010-1234-5678<br />
-      💳 국민은행 123456-78-901234
-    </div>
-  </div>
-
-  <div class="info-item">
-    <button class="info-toggle">👨‍👦 신랑측 혼주 김아버지</button>
-    <div class="info-content">
-      📞 010-2222-3333<br />
-      💳 농협 111-22-333444
-    </div>
-  </div>
-
-  <div class="info-item">
-    <button class="info-toggle">👩‍👧 신부측 혼주 이어머니</button>
-    <div class="info-content">
-      📞 010-4444-5555<br />
-      💳 우리은행 555-66-777888
-    </div>
-  </div>
-</div>
-
-
-    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-    <!-- 스크립트 -->
     <script>
       // 프리로딩 제거
       window.addEventListener("load", () => {
@@ -307,10 +308,7 @@
       // 스크롤 등장 효과
       const faders = document.querySelectorAll(".fade-in-section");
       const appearOptions = { threshold: 0.1 };
-      const appearOnScroll = new IntersectionObserver(function (
-        entries,
-        observer
-      ) {
+      const appearOnScroll = new IntersectionObserver(function (entries, observer) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("is-visible");
@@ -331,22 +329,31 @@
       const modal = document.getElementById("imageModal");
       const modalImg = document.getElementById("modalImg");
       const closeBtn = document.querySelector(".modal-close");
-
       document.querySelectorAll(".grid-gallery img").forEach((img) => {
         img.addEventListener("click", () => {
           modal.style.display = "flex";
           modalImg.src = img.src;
         });
       });
-
       closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
       });
-
       modal.addEventListener("click", (e) => {
         if (e.target === modal) {
           modal.style.display = "none";
         }
+      });
+
+      // 부드러운 아코디언
+      document.querySelectorAll('.info-toggle').forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          const isOpen = content.classList.contains('open');
+
+          document.querySelectorAll('.info-content').forEach(c => c.classList.remove('open'));
+
+          if (!isOpen) content.classList.add('open');
+        });
       });
     </script>
   </body>
