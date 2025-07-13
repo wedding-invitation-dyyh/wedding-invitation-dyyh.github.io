@@ -12,7 +12,6 @@
     />
 
     <style>
-      /* 기본 스타일 */
       body {
         font-family: "Arial", sans-serif;
         background: #fffaf5;
@@ -39,6 +38,39 @@
         max-width: 400px;
         border-radius: 12px;
       }
+      .info-item {
+        margin-top: 12px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      }
+
+      .info-toggle {
+        width: 100%;
+        background: #fcefe5;
+        border: none;
+        padding: 14px 20px;
+        font-size: 16px;
+        text-align: left;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      .info-toggle:hover {
+        background: #f7e0cc;
+      }
+
+      .info-content {
+        background: #fffaf5;
+        padding: 12px 20px;
+        display: none;
+        font-size: 15px;
+        line-height: 1.6;
+        border-top: 1px solid #eee;
+      }
+
 
       .card {
         max-width: 600px;
@@ -87,7 +119,54 @@
         border-radius: 12px;
       }
 
-      /* 모바일 반응형 */
+      .grid-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        margin-top: 20px;
+      }
+
+      .grid-gallery img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: transform 0.2s;
+      }
+
+      .grid-gallery img:hover {
+        transform: scale(1.05);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 99999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 12px;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        font-size: 36px;
+        color: white;
+        cursor: pointer;
+      }
+
       @media (max-width: 600px) {
         .card {
           padding: 20px;
@@ -111,18 +190,16 @@
       <img src="preview.jpg" alt="미리보기 사진" />
     </div>
 
-    <!-- 본문 시작 -->
+    <!-- 인삿말 -->
     <div class="card fade-in-section">
       <h1>💍 결혼합니다 💍</h1>
       <div class="names">동연 ❤️ 영흔</div>
       <div class="date">2026년 01월 24일 (토) 오후 1시 20분</div>
-      <div class="location">
-        서울 구로구 경인로 610 더링크 호텔 3층 베일리 홀
-      </div>
+      <div class="location">서울 구로구 경인로 610 더링크 호텔 3층 베일리 홀</div>
       <p style="margin-top: 30px">소중한 당신을 초대합니다.</p>
     </div>
 
-    <!-- 갤러리 슬라이드 -->
+    <!-- 스와이프 갤러리 -->
     <div class="card fade-in-section">
       <h2>우리의 순간들</h2>
       <div class="swiper">
@@ -135,7 +212,26 @@
       </div>
     </div>
 
-    <!-- 지도 -->
+    <!-- 퍼즐 갤러리 -->
+    <div class="card fade-in-section">
+      <h2>추억 퍼즐</h2>
+      <div class="grid-gallery">
+        <img src="photo1.jpg" alt="photo1" />
+        <img src="photo2.jpg" alt="photo2" />
+        <img src="photo3.jpg" alt="photo3" />
+        <img src="photo4.jpg" alt="photo4" />
+        <img src="photo5.jpg" alt="photo5" />
+        <img src="photo6.jpg" alt="photo6" />
+      </div>
+    </div>
+
+    <!-- 모달 확대보기 -->
+    <div id="imageModal" class="modal">
+      <span class="modal-close">&times;</span>
+      <img class="modal-content" id="modalImg" />
+    </div>
+
+    <!-- 오시는 길 -->
     <div class="card fade-in-section">
       <h2>오시는 길</h2>
       <iframe
@@ -146,7 +242,7 @@
       ></iframe>
     </div>
 
-    <!-- 참석 여부 폼 -->
+    <!-- 참석 여부 -->
     <div class="card fade-in-section">
       <h2>참석 여부 전달</h2>
       <iframe
@@ -158,9 +254,49 @@
       </iframe>
     </div>
 
-    <!-- Swiper & JS -->
+    <!-- 연락처 및 계좌번호 -->
+    <!-- 연락처 및 계좌번호 (아코디언) -->
+<div class="card fade-in-section">
+  <h2>연락처 및 계좌번호</h2>
+
+  <div class="info-item">
+    <button class="info-toggle">👰 신부 이영흔</button>
+    <div class="info-content">
+      📞 010-9876-5432<br />
+      💳 신한은행 987654-32-109876
+    </div>
+  </div>
+
+  <div class="info-item">
+    <button class="info-toggle">🤵 신랑 김동연</button>
+    <div class="info-content">
+      📞 010-1234-5678<br />
+      💳 국민은행 123456-78-901234
+    </div>
+  </div>
+
+  <div class="info-item">
+    <button class="info-toggle">👨‍👦 신랑측 혼주 김아버지</button>
+    <div class="info-content">
+      📞 010-2222-3333<br />
+      💳 농협 111-22-333444
+    </div>
+  </div>
+
+  <div class="info-item">
+    <button class="info-toggle">👩‍👧 신부측 혼주 이어머니</button>
+    <div class="info-content">
+      📞 010-4444-5555<br />
+      💳 우리은행 555-66-777888
+    </div>
+  </div>
+</div>
+
+
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+    <!-- 스크립트 -->
     <script>
       // 프리로딩 제거
       window.addEventListener("load", () => {
@@ -168,7 +304,7 @@
         document.body.style.overflow = "auto";
       });
 
-      // 스크롤 시 등장
+      // 스크롤 등장 효과
       const faders = document.querySelectorAll(".fade-in-section");
       const appearOptions = { threshold: 0.1 };
       const appearOnScroll = new IntersectionObserver(function (
@@ -181,17 +317,36 @@
             observer.unobserve(entry.target);
           }
         });
-      },
-      appearOptions);
-      faders.forEach((fader) => {
-        appearOnScroll.observe(fader);
-      });
+      }, appearOptions);
+      faders.forEach((fader) => appearOnScroll.observe(fader));
 
-      // Swiper
+      // Swiper 슬라이드
       new Swiper(".swiper", {
         pagination: { el: ".swiper-pagination" },
         loop: true,
         autoplay: { delay: 3000 },
+      });
+
+      // 이미지 모달
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImg");
+      const closeBtn = document.querySelector(".modal-close");
+
+      document.querySelectorAll(".grid-gallery img").forEach((img) => {
+        img.addEventListener("click", () => {
+          modal.style.display = "flex";
+          modalImg.src = img.src;
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
       });
     </script>
   </body>
