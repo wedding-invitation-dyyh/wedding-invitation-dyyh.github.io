@@ -198,6 +198,7 @@
         }
       }
     </style>
+    <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q95q05ze6y"></script>
   </head>
 
   <body>
@@ -221,12 +222,10 @@
 
     <div class="card fade-in-section">
       <h2>오시는 길</h2>
-      <iframe
-        src="https://map.naver.com/p/search/더링크호텔서울?c=15.00,0,0,0,dh"
-        width="100%"
-        height="300"
-        allowfullscreen
-      ></iframe>
+      <div
+        id="map"
+        style="width: 100%; height: 300px; border-radius: 12px"
+      ></div>
     </div>
 
     <div class="card fade-in-section">
@@ -377,6 +376,37 @@
           });
         });
       });
+    </script>
+    <script>
+      function initMap() {
+        const location = new naver.maps.LatLng(37.5002189, 126.8828255); // 더링크호텔 위치
+
+        const map = new naver.maps.Map("map", {
+          center: location,
+          zoom: 16,
+        });
+
+        const marker = new naver.maps.Marker({
+          position: location,
+          map: map,
+          title: "더링크 호텔 서울",
+        });
+
+        const infoWindow = new naver.maps.InfoWindow({
+          content: `
+        <div style="padding:10px;font-size:14px;line-height:1.5;">
+          <b>더링크 호텔 서울</b><br>
+          서울 구로구 경인로 610
+        </div>
+      `,
+        });
+
+        naver.maps.Event.addListener(marker, "click", () => {
+          infoWindow.open(map, marker);
+        });
+      }
+
+      window.addEventListener("load", initMap);
     </script>
   </body>
 </html>
