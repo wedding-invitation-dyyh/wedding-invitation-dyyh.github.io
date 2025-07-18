@@ -201,7 +201,7 @@
     </style>
     <script
       type="text/javascript"
-      src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=q95q05ze6y&callback=CALLBACK_FUNCTION"
+      src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=q95q05ze6y"
     ></script>
   </head>
 
@@ -211,7 +211,7 @@
     </audio>
 
     <div id="preloader">
-      <img src="preloading.gif" alt="미리보기 사진" />
+      <img src="LRA_9201.jpg" alt="미리보기 사진" />
     </div>
 
     <div class="card fade-in-section center-text">
@@ -257,7 +257,14 @@
 
     <div id="imageModal" class="modal">
       <span class="modal-close">&times;</span>
-      <img class="modal-content" id="modalImg" />
+      <div class="swiper modal-swiper">
+        <div class="swiper-wrapper" id="modalSwiperWrapper">
+          <!-- JS에서 이미지들을 동적으로 채움 -->
+        </div>
+        <!-- 좌우 화살표 -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
     </div>
 
     <!-- 마음 전하는 곳 (슬라이드 아코디언) -->
@@ -338,25 +345,6 @@
         autoplay: { delay: 3000 },
       });
 
-      // 이미지 모달
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("modalImg");
-      const closeBtn = document.querySelector(".modal-close");
-      document.querySelectorAll(".grid-gallery img").forEach((img) => {
-        img.addEventListener("click", () => {
-          modal.style.display = "flex";
-          modalImg.src = img.src;
-        });
-      });
-      closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          modal.style.display = "none";
-        }
-      });
-
       // 부드러운 아코디언
       document.querySelectorAll(".info-toggle").forEach((button) => {
         button.addEventListener("click", () => {
@@ -383,11 +371,78 @@
     </script>
     <script>
       var mapOptions = {
-        center: new naver.maps.LatLng(37.3595704, 127.105399),
-        zoom: 10,
+        center: new naver.maps.LatLng(37.50561371888473, 126.88395572665566),
+        zoom: 17,
       };
 
       var map = new naver.maps.Map("map", mapOptions);
+
+      var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(37.5055, 126.88388),
+        map: map,
+        title: "더링크호텔 베일리홀",
+      });
+
+      var infoWindow = new naver.maps.InfoWindow({
+        content:
+          '<div style="padding:10px;font-size:14px;">더링크 호텔 3층 베일리홀<br>서울 구로구 경인로 610</div>',
+      });
+
+      naver.maps.Event.addListener(marker, "click", function () {
+        infoWindow.open(map, marker);
+      });
+    </script>
+    <script>
+      const modal = document.getElementById("imageModal");
+      const closeBtn = document.querySelector(".modal-close");
+      const galleryImages = document.querySelectorAll(".grid-gallery img");
+      const modalWrapper = document.getElementById("modalSwiperWrapper");
+
+      let modalSwiper;
+
+      // 이미지 경로 수집
+      const imageSrcList = Array.from(galleryImages).map((img) => img.src);
+
+      // 이미지 클릭 시 모달에 슬라이드 구성
+      galleryImages.forEach((img, index) => {
+        img.addEventListener("click", () => {
+          // 모달 보여주기
+          modal.style.display = "flex";
+
+          // 슬라이드 내부 비우고 다시 채움 (초기화용)
+          modalWrapper.innerHTML = "";
+          imageSrcList.forEach((src) => {
+            const slide = document.createElement("div");
+            slide.className = "swiper-slide";
+            slide.innerHTML = `<img src="${src}" style="max-height: 80vh; max-width: 100%; object-fit: contain;" />`;
+            modalWrapper.appendChild(slide);
+          });
+
+          // Swiper 초기화 (기존 인스턴스 제거 후 다시 생성)
+          if (modalSwiper) {
+            modalSwiper.destroy();
+          }
+
+          modalSwiper = new Swiper(".modal-swiper", {
+            initialSlide: index, // 클릭한 이미지로 이동
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            loop: true,
+          });
+        });
+      });
+
+      // 모달 닫기
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
     </script>
   </body>
 </html>
