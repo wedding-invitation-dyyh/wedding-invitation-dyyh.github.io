@@ -206,7 +206,7 @@
   </head>
 
   <body>
-    <audio autoplay loop>
+    <audio id="wedding-audio" loop>
       <source src="La_Boum.mp3" type="audio/mpeg" />
     </audio>
 
@@ -214,14 +214,110 @@
       <img src="LRA_9201.jpg" alt="미리보기 사진" />
     </div>
 
+    <div>
+      <img src="LRA_Background.jpg" width="100%" alt="photo0" />
+    </div>
+
     <div class="card fade-in-section center-text">
-      <h1>💍 결혼합니다 💍</h1>
-      <div class="names">동연 ❤️ 영흔</div>
+      <div class="names">동연 🖤 영흔</div>
       <div class="date">2026년 01월 24일 (토) 오후 1시 20분</div>
       <div class="location">
         서울 구로구 경인로 610 더링크 호텔 3층 베일리 홀
       </div>
-      <p style="margin-top: 30px">소중한 당신을 초대합니다.</p>
+    </div>
+    <div class="card fade-in-section center-text">
+      <h2>📅 예식 일정</h2>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 12px;
+          background: #fffaf5;
+          padding: 16px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          max-width: 300px;
+          margin: 0 auto;
+        "
+      >
+        <div style="font-size: 20px; font-weight: bold; color: #b36b00">
+          2026년 1월
+        </div>
+        <table
+          style="margin-top: 8px; border-collapse: collapse; font-size: 14px"
+        >
+          <thead>
+            <tr style="color: #888">
+              <th style="padding: 6px">일</th>
+              <th style="padding: 6px">월</th>
+              <th style="padding: 6px">화</th>
+              <th style="padding: 6px">수</th>
+              <th style="padding: 6px">목</th>
+              <th style="padding: 6px">금</th>
+              <th style="padding: 6px">토</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 6px; color: #ccc">28</td>
+              <td style="padding: 6px; color: #ccc">29</td>
+              <td style="padding: 6px; color: #ccc">30</td>
+              <td style="padding: 6px; color: #ccc">31</td>
+              <td style="padding: 6px">1</td>
+              <td style="padding: 6px">2</td>
+              <td style="padding: 6px">3</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px">4</td>
+              <td style="padding: 6px">5</td>
+              <td style="padding: 6px">6</td>
+              <td style="padding: 6px">7</td>
+              <td style="padding: 6px">8</td>
+              <td style="padding: 6px">9</td>
+              <td style="padding: 6px">10</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px">11</td>
+              <td style="padding: 6px">12</td>
+              <td style="padding: 6px">13</td>
+              <td style="padding: 6px">14</td>
+              <td style="padding: 6px">15</td>
+              <td style="padding: 6px">16</td>
+              <td style="padding: 6px">17</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px">18</td>
+              <td style="padding: 6px">19</td>
+              <td style="padding: 6px">20</td>
+              <td style="padding: 6px">21</td>
+              <td style="padding: 6px">22</td>
+              <td style="padding: 6px">23</td>
+              <td
+                style="
+                  padding: 6px;
+                  background: #e96bb0;
+                  color: white;
+                  font-weight: bold;
+                  border-radius: 50px;
+                "
+              >
+                24
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 6px">28</td>
+              <td style="padding: 6px">29</td>
+              <td style="padding: 6px">30</td>
+              <td style="padding: 6px">31</td>
+              <td colspan="3"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 12px; font-size: 15px; color: #333">
+          2026년 1월 24일 (토요일) 오후 1시 20분<br />
+          예식이 진행됩니다.
+        </div>
+      </div>
     </div>
 
     <div class="card fade-in-section">
@@ -235,7 +331,7 @@
     <div class="card fade-in-section">
       <h2>우리의 순간들</h2>
       <div class="grid-gallery">
-        <img src="LRA_8990.jpg" alt="photo1" />
+        <!-- <img src="LRA_8990.jpg" alt="photo1" /> -->
         <img src="LRA_9018.jpg" alt="photo1" />
         <img src="LRA_9123.jpg" alt="photo2" />
         <img src="LRA_9147.jpg" alt="photo3" />
@@ -317,8 +413,10 @@
     <script>
       // 프리로딩 제거
       window.addEventListener("load", () => {
-        document.getElementById("preloader").style.display = "none";
-        document.body.style.overflow = "auto";
+        setTimeout(() => {
+          document.getElementById("preloader").style.display = "none";
+          document.body.style.overflow = "auto";
+        }, 20); // 3초 대기 후 프리로더 제거
       });
 
       // 스크롤 등장 효과
@@ -442,6 +540,19 @@
         if (e.target === modal) {
           modal.style.display = "none";
         }
+      });
+    </script>
+    <script>
+      window.addEventListener("click", function handleFirstClick() {
+        const audio = document.getElementById("wedding-audio");
+        if (audio) {
+          audio.play().catch(() => {
+            // 일부 모바일 브라우저에서 play() 실패할 수도 있어요
+            console.warn("Audio play blocked by browser policy.");
+          });
+        }
+        // 한 번만 실행되도록 이벤트 제거
+        window.removeEventListener("click", handleFirstClick);
       });
     </script>
   </body>
