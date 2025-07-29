@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>동연 ❤️ 영흔 결혼합니다</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background: #fffaf5;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      #preloader img {
+        width: 60%;
+        max-width: 400px;
+        border-radius: 12px;
+      }
+
+      .card {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      h1 {
+        color: #b36b00;
+        font-size: 24px;
+        margin-bottom: 0;
+      }
+
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease-out;
+        visibility: hidden;
+      }
+
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: none;
+        visibility: visible;
+      }
+
+      iframe {
+        width: 100%;
+        border: none;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 300px;
+        margin-top: 20px;
+      }
+
+      .swiper-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+
+      .grid-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        margin-top: 20px;
+      }
+
+      .grid-gallery img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: transform 0.2s;
+      }
+
+      .grid-gallery img:hover {
+        transform: scale(1.05);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 99999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 12px;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        font-size: 36px;
+        color: white;
+        cursor: pointer;
+      }
+
+      .info-item {
+        margin-top: 12px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      .info-toggle {
+        width: 100%;
+        background: #fcefe5;
+        border: none;
+        padding: 14px 20px;
+        font-size: 16px;
+        text-align: center;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      .center-text {
+        text-align: center;
+      }
+
+      .info-toggle:hover {
+        background-color: #f7e0cc;
+      }
+
+      .info-content {
+        background: #fffaf5;
+        padding: 0 20px;
+        font-size: 15px;
+        line-height: 1.6;
+        border-top: 1px solid #eee;
+
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+      }
+      .copy-btn {
+        margin-left: 8px;
+        padding: 2px 8px;
+        font-size: 12px;
+        border: none;
+        border-radius: 6px;
+        background-color: #f7e0cc;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .copy-btn:hover {
+        background-color: #f0d4ba;
+      }
+
+      .info-content.open {
+        padding: 12px 20px;
+        max-height: 200px;
+      }
+
+      @media (max-width: 600px) {
+        .card {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=q95q05ze6y"
+    ></script>
+  </head>
+
+  <body>
+    <audio id="wedding-audio" loop>
+      <source src="La_Boum.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div id="preloader">
+      <img src="LRA_9201.jpg" alt="미리보기 사진" />
+    </div>
+
+    <div>
+      <img src="LRA_Background.jpg" width="100%" alt="photo0" />
+    </div>
+
+    <div class="card fade-in-section center-text">
+      <div class="names">동연 🖤 영흔</div>
+      <div class="date">2026년 01월 24일 (토) 오후 1시 20분</div>
+      <div class="location">
+        서울 구로구 경인로 610 더링크 호텔 3층 베일리 홀
+      </div>
+    </div>
+    <div class="card fade-in-section center-text">
+      <h2>📅 예식 일정</h2>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 12px;
+          background: #fffaf5;
+          padding: 16px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          max-width: 300px;
+          margin: 0 auto;
+        "
+      >
+        <div style="font-size: 20px; font-weight: bold; color: #b36b00">
+          2026년 1월
+        </div>
+        <table
+          style="margin-top: 8px; border-collapse: collapse; font-size: 14px"
+        >
+          <thead>
+            <tr style="color: #888">
+              <th style="padding: 6px">일</th>
+              <th style="padding: 6px">월</th>
+              <th style="padding: 6px">화</th>
+              <th style="padding: 6px">수</th>
+              <th style="padding: 6px">목</th>
+              <th style="padding: 6px">금</th>
+              <th style="padding: 6px">토</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 6px; color: #ccc">28</td>
+              <td style="padding: 6px; color: #ccc">29</td>
+              <td style="padding: 6px; color: #ccc">30</td>
+              <td style="padding: 6px; color: #ccc">31</td>
+              <td style="padding: 6px">1</td>
+              <td style="padding: 6px">2</td>
+              <td style="padding: 6px">3</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px">4</td>
+              <td style="padding: 6px">5</td>
+              <td style="padding: 6px">6</td>
+              <td style="padding: 6px">7</td>
+              <td style="padding: 6px">8</td>
+              <td style="padding: 6px">9</td>
+              <td style="padding: 6px">10</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px">11</td>
+              <td style="padding: 6px">12</td>
+              <td style="padding: 6px">13</td>
+              <td style="padding: 6px">14</td>
+              <td style="padding: 6px">15</td>
+              <td style="padding: 6px">16</td>
+              <td style="padding: 6px">17</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px">18</td>
+              <td style="padding: 6px">19</td>
+              <td style="padding: 6px">20</td>
+              <td style="padding: 6px">21</td>
+              <td style="padding: 6px">22</td>
+              <td style="padding: 6px">23</td>
+              <td
+                style="
+                  padding: 6px;
+                  background: #e96bb0;
+                  color: white;
+                  font-weight: bold;
+                  border-radius: 50px;
+                "
+              >
+                24
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 6px">28</td>
+              <td style="padding: 6px">29</td>
+              <td style="padding: 6px">30</td>
+              <td style="padding: 6px">31</td>
+              <td colspan="3"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top: 12px; font-size: 15px; color: #333">
+          2026년 1월 24일 (토요일) 오후 1시 20분<br />
+          예식이 진행됩니다.
+        </div>
+      </div>
+    </div>
+
+    <div class="card fade-in-section">
+      <h2>오시는 길</h2>
+      <div
+        id="map"
+        style="width: 100%; height: 400px; border-radius: 12px"
+      ></div>
+    </div>
+
+    <div class="card fade-in-section">
+      <h2>우리의 순간들</h2>
+      <div class="grid-gallery">
+        <!-- <img src="LRA_8990.jpg" alt="photo1" /> -->
+        <img src="LRA_9018.jpg" alt="photo1" />
+        <img src="LRA_9123.jpg" alt="photo2" />
+        <img src="LRA_9147.jpg" alt="photo3" />
+        <img src="LRA_9163.jpg" alt="photo4" />
+        <img src="LRA_9201.jpg" alt="photo5" />
+        <img src="LRA_9297.jpg" alt="photo1" />
+        <img src="LRA_9422.jpg" alt="photo1" />
+        <img src="LRA_9463.jpg" alt="photo1" />
+        <img src="LRA_9521.jpg" alt="photo1" />
+        <img src="LRA_9537.jpg" alt="photo1" />
+        <img src="LRA_9586.jpg" alt="photo1" />
+        <img src="LRA_9611.jpg" alt="photo1" />
+        <img src="LRA_9669.jpg" alt="photo1" />
+        <img src="LRA_9701.jpg" alt="photo1" />
+        <img src="LRA_9803.jpg" alt="photo1" />
+        <img src="LRA_9930.jpg" alt="photo6" />
+      </div>
+    </div>
+
+    <div id="imageModal" class="modal">
+      <span class="modal-close">&times;</span>
+      <div class="swiper modal-swiper">
+        <div class="swiper-wrapper" id="modalSwiperWrapper">
+          <!-- JS에서 이미지들을 동적으로 채움 -->
+        </div>
+        <!-- 좌우 화살표 -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+
+    <!-- 마음 전하는 곳 (슬라이드 아코디언) -->
+    <div class="card fade-in-section">
+      <h2>마음 전하는 곳</h2>
+      <div class="info-item">
+        <button class="info-toggle">🤵 신랑 김동연</button>
+        <div class="info-content">
+          📞 010-4669-3068<br />
+          💳 국민은행 <span class="copy-text">943202-00-132949</span>
+          <button class="copy-btn">복사</button>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <button class="info-toggle">👰 신부 도영흔</button>
+        <div class="info-content">
+          📞 010-7578-6721<br />
+          💳 우리은행 <span class="copy-text">1002-045-494771</span>
+          <button class="copy-btn">복사</button>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <button class="info-toggle">👨‍👦 신랑측 혼주</button>
+        <div class="info-content">
+          👨🏻 신랑 아버지 김철호 👩🏻 신랑 어머니 김정숙<br />
+          📞 010-8510-1046<br />
+          💳 하나 <span class="copy-text">209-890801-92307</span>
+          <button class="copy-btn">복사</button>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <button class="info-toggle">👩‍👧 신부측 혼주</button>
+        <div class="info-content">
+          👨🏻 신부 아버지 도회송<br />
+          📞 010-3534-6721<br />
+          💳 신한 <span class="copy-text">110-392-178524</span>
+          <button class="copy-btn">복사</button><br /><br />
+          👩🏻 신부 어머니 허선주<br />
+          📞 010-3819-6721<br />
+          💳 국민 <span class="copy-text">615801-04-277124</span>
+          <button class="copy-btn">복사</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      // 프리로딩 제거
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("preloader").style.display = "none";
+          document.body.style.overflow = "auto";
+        }, 20); // 3초 대기 후 프리로더 제거
+      });
+
+      // 스크롤 등장 효과
+      const faders = document.querySelectorAll(".fade-in-section");
+      const appearOptions = { threshold: 0.1 };
+      const appearOnScroll = new IntersectionObserver(function (
+        entries,
+        observer
+      ) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      appearOptions);
+      faders.forEach((fader) => appearOnScroll.observe(fader));
+
+      // Swiper 슬라이드
+      new Swiper(".swiper", {
+        pagination: { el: ".swiper-pagination" },
+        loop: true,
+        autoplay: { delay: 3000 },
+      });
+
+      // 부드러운 아코디언
+      document.querySelectorAll(".info-toggle").forEach((button) => {
+        button.addEventListener("click", () => {
+          const content = button.nextElementSibling;
+          const isOpen = content.classList.contains("open");
+
+          document
+            .querySelectorAll(".info-content")
+            .forEach((c) => c.classList.remove("open"));
+
+          if (!isOpen) content.classList.add("open");
+        });
+      });
+      // 복사 버튼 기능
+      document.querySelectorAll(".copy-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const text = btn.previousElementSibling.innerText;
+          navigator.clipboard.writeText(text).then(() => {
+            btn.innerText = "복사됨!";
+            setTimeout(() => (btn.innerText = "복사"), 1500);
+          });
+        });
+      });
+    </script>
+    <script>
+      var mapOptions = {
+        center: new naver.maps.LatLng(37.50561371888473, 126.88395572665566),
+        zoom: 17,
+      };
+
+      var map = new naver.maps.Map("map", mapOptions);
+
+      var marker = new naver.maps.Marker({
+        position: new naver.maps.LatLng(37.5055, 126.88388),
+        map: map,
+        title: "더링크호텔 베일리홀",
+      });
+
+      var infoWindow = new naver.maps.InfoWindow({
+        content:
+          '<div style="padding:10px;font-size:14px;">더링크 호텔 3층 베일리홀<br>서울 구로구 경인로 610</div>',
+      });
+
+      naver.maps.Event.addListener(marker, "click", function () {
+        infoWindow.open(map, marker);
+      });
+    </script>
+    <script>
+      const modal = document.getElementById("imageModal");
+      const closeBtn = document.querySelector(".modal-close");
+      const galleryImages = document.querySelectorAll(".grid-gallery img");
+      const modalWrapper = document.getElementById("modalSwiperWrapper");
+
+      let modalSwiper;
+
+      // 이미지 경로 수집
+      const imageSrcList = Array.from(galleryImages).map((img) => img.src);
+
+      // 이미지 클릭 시 모달에 슬라이드 구성
+      galleryImages.forEach((img, index) => {
+        img.addEventListener("click", () => {
+          // 모달 보여주기
+          modal.style.display = "flex";
+
+          // 슬라이드 내부 비우고 다시 채움 (초기화용)
+          modalWrapper.innerHTML = "";
+          imageSrcList.forEach((src) => {
+            const slide = document.createElement("div");
+            slide.className = "swiper-slide";
+            slide.innerHTML = `<img src="${src}" style="max-height: 80vh; max-width: 100%; object-fit: contain;" />`;
+            modalWrapper.appendChild(slide);
+          });
+
+          // Swiper 초기화 (기존 인스턴스 제거 후 다시 생성)
+          if (modalSwiper) {
+            modalSwiper.destroy();
+          }
+
+          modalSwiper = new Swiper(".modal-swiper", {
+            initialSlide: index, // 클릭한 이미지로 이동
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            loop: true,
+          });
+        });
+      });
+
+      // 모달 닫기
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    </script>
+    <script>
+      window.addEventListener("click", function handleFirstClick() {
+        const audio = document.getElementById("wedding-audio");
+        if (audio) {
+          audio.play().catch(() => {
+            // 일부 모바일 브라우저에서 play() 실패할 수도 있어요
+            console.warn("Audio play blocked by browser policy.");
+          });
+        }
+        // 한 번만 실행되도록 이벤트 제거
+        window.removeEventListener("click", handleFirstClick);
+      });
+    </script>
+  </body>
+</html>
