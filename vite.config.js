@@ -3,6 +3,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/wedding-invitation-dyyh.github.io/", // 👈 GitHub Pages용 경로
+  base: "/wedding-invitation-dyyh.github.io/",
   plugins: [react()],
 });
