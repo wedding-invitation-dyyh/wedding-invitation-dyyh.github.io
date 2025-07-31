@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <div className="container">
-      <h1 className="title">태훈 ❤️ 수정</h1>
+      <h1 className="title">동연 ❤️ 영흔</h1>
       <p className="subtitle">우리가 결혼합니다</p>
       <div className="details">
         <p>📅 2025년 4월 19일 (토) 오후 6시 30분</p>
