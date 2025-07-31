@@ -9,7 +9,11 @@ function App() {
         <p>📅 2025년 4월 19일 (토) 오후 6시 30분</p>
         <p>📍 서울 강남구 웨딩하우스 3층</p>
       </div>
-      <img className="main-image" src="./main.jpg" alt="청첩장 이미지" />
+      <img
+        className="main-image"
+        src={`${import.meta.env.BASE_URL}main.jpg`}
+        alt="청첩장 이미지"
+      />
     </div>
   );
 }
