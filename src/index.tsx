@@ -1,4 +1,4 @@
-// import { NavermapsProvider } from "react-naver-maps";
+import { NavermapsProvider } from "react-naver-maps";
 import SimpleLayout from "@/layout/Layouts/Simple";
 import rawData from "data.json";
 import { useParams } from "react-router-dom";
@@ -14,24 +14,23 @@ import { Snowfall } from "react-snowfall";
 import petal from "@/assets/icons/petal3.png";
 
 const IndexPage = () => {
-  const db: Record<string, IData> = rawData as any;
+  const db: Record<string, IData> = rawData;
   const ncpClientId = "xhxksvdr5n";
-  const { pageId } = useParams<{ pageId?: string }>();
-
-  // 후보 id 계산
-  const firstKey = Object.keys(db ?? {})[0];
-  const fallbackId =
-    (db && db[ncpClientId] ? ncpClientId : undefined) ?? firstKey ?? undefined;
-
-  // 실제 사용할 id
-  const effectiveId = pageId && db && db[pageId] ? pageId : fallbackId;
-
+  const { pageIdTemp } = useParams();
+  const pageId = pageIdTemp ?? "default";
   // db가 비었거나, 유효한 키가 전혀 없을 때만 Not Found
-  if (!db || !effectiveId) {
-    return <div>존재하지 않는 페이지입니다.</div>;
+  // if (!pageId || !db) {
+  //   return <div>존재하지 않는 페이지입니다.</div>;
+  // }
+  if (!db) {
+    return <div>존재하지 않는 페이지입니다 : db.</div>;
+  }
+  if (!pageId) {
+    return <div>존재하지 않는 페이지입니다 : pageId.</div>;
   }
 
-  const data = db[effectiveId];
+  const data = db[pageId];
+  console.log(data);
   const [splashVisible, setSplashVisible] = useState(true);
   const [startFadeOut, setStartFadeOut] = useState(false);
   // const petal1 = document.createElement("img");
@@ -60,65 +59,65 @@ const IndexPage = () => {
   }, []);
 
   return (
-    // <NavermapsProvider ncpClientId={ncpClientId}>
-    <HelmetProvider>
-      <ColorProvider id={effectiveId}>
-        <Helmet>
-          <title>{data.main?.title || "우리 결혼해요"}</title>
-          <meta property="og:title" content={data.main?.title} />
-          <meta
-            name="description"
-            content={data.main?.eventDetail || "초대합니다"}
-          />
-          <meta
-            property="og:image"
-            content={`https://wedding-invitation-dyyh.github.io/${pageId}/main/main.png`}
-          />
-          <meta
-            property="og:url"
-            content={`https://wedding-invitation-dyyh.github.io/${pageId}`}
-          />
-        </Helmet>
-        <Snowfall
-          color="white"
-          speed={[0, 0.1]}
-          wind={[-1, -0.5]}
-          images={images}
-          style={{
-            position: "fixed",
-            width: "100vw",
-            height: "100vh",
-            zIndex: 99,
-            pointerEvents: "none",
-          }}
-          snowflakeCount={60}
-        />
-
-        <>
-          {data.splashColor && splashVisible ? (
-            <Splash
-              title={data.main?.title || ""}
-              date={data.main?.date}
-              eventDetail_without_date={data.main?.eventDetail_without_date}
-              fadeOut={startFadeOut}
-              mainColor={data.splashColor}
-              splashMode={data.splashMode || "default"}
+    <NavermapsProvider ncpClientId={ncpClientId}>
+      <HelmetProvider>
+        <ColorProvider id={pageId}>
+          <Helmet>
+            <title>{data.main?.title || "우리 결혼해요"}</title>
+            <meta property="og:title" content={data.main?.title} />
+            <meta
+              name="description"
+              content={data.main?.eventDetail || "초대합니다"}
             />
-          ) : (
-            <></>
-          )}
+            <meta
+              property="og:image"
+              content={`https://wedding-invitation-dyyh.github.io/${pageId}/main/main.jpg`}
+            />
+            <meta
+              property="og:url"
+              content={`https://wedding-invitation-dyyh.github.io/${pageId}`}
+            />
+          </Helmet>
+          <Snowfall
+            color="white"
+            speed={[0, 0.1]}
+            wind={[-1, -0.5]}
+            images={images}
+            style={{
+              position: "fixed",
+              width: "100vw",
+              height: "100vh",
+              zIndex: 99,
+              pointerEvents: "none",
+            }}
+            snowflakeCount={60}
+          />
 
-          <LayoutContainer>
-            {data.type == "movie" ? (
-              <MovieLayout id={effectiveId} data={data} />
+          <>
+            {data.splashColor && splashVisible ? (
+              <Splash
+                title={data.main?.title || ""}
+                date={data.main?.date}
+                eventDetail_without_date={data.main?.eventDetail_without_date}
+                fadeOut={startFadeOut}
+                mainColor={data.splashColor}
+                splashMode={data.splashMode || "default"}
+              />
             ) : (
-              <SimpleLayout id={effectiveId} data={data} />
+              <></>
             )}
-          </LayoutContainer>
-        </>
-      </ColorProvider>
-    </HelmetProvider>
-    // </NavermapsProvider>
+
+            <LayoutContainer>
+              {data.type == "movie" ? (
+                <MovieLayout id={pageId} data={data} />
+              ) : (
+                <SimpleLayout id={pageId} data={data} />
+              )}
+            </LayoutContainer>
+          </>
+        </ColorProvider>
+      </HelmetProvider>
+    </NavermapsProvider>
   );
 };
 export default IndexPage;

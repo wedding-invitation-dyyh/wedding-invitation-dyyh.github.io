@@ -45,9 +45,9 @@
       "eventDetail_without_date": "더링크호텔 3층 베일리 홀"
     },
     "mapInfo": {
-      "address1": "신라호텔 영빈관",
-      "address2": "서울 중구 동호로 249",
-      "naverMap": "https://map.naver.com/p/search/신라호텔+영빈관/place/18698760?c=15.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202507211941&locale=ko&svcName=map_pcv5&searchText=신라호텔+영빈관",
+      "address1": "더링크 호텔 서울",
+      "address2": "서울 구로구 경인로 610",
+      "naverMap": "https://naver.me/FqWtKQUF",
       "location": [
         {
           "title": "지하철",
