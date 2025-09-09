@@ -1,0 +1,121 @@
+{
+  "default": {
+    "type": "simple",
+    "mainColor": "#f78828",
+    "subColor": "rgba(255,199,125,0.88)",
+    "bgColor": "#fff",
+    "fontColor": "#000",
+    "splashColor": "#000",
+    "main": {
+      "title": "동연과 영흔, 결혼합니다",
+      "message": "서로의 가장 좋은 친구이자\n오래된 연인이었던 우리가,\n이제는 하나의 가족이 되려 합니다.\n\n함께 걸어온 시간,\n그 길 위에서 배운 사랑과 믿음을 바탕으로\n저희 두 사람이 인생의 또 다른 시작을 하려 합니다.\n\n귀한 걸음으로 축복해주시면 감사하겠습니다.\n",
+      "videoSrc": "",
+      "date": "2026년 01월 24일",
+      "host": {
+        "groom": {
+          "name": "김동연",
+          "relation": "차남",
+          "parents": [
+            {
+              "relation": "아버지",
+              "name": "김철호"
+            },
+            {
+              "relation": "어머니",
+              "name": "김정숙"
+            }
+          ]
+        },
+        "bride": {
+          "name": "도영흔",
+          "relation": "차녀",
+          "parents": [
+            {
+              "relation": "아버지",
+              "name": "도회송"
+            },
+            {
+              "relation": "어머니",
+              "name": "허선주"
+            }
+          ]
+        }
+      },
+      "eventDetail": "2026년 01월 24일 1시 20분\n더링크호텔 3층 베일리 홀",
+      "eventDetail_without_date": "더링크호텔 3층 베일리 홀"
+    },
+    "mapInfo": {
+      "address1": "신라호텔 영빈관",
+      "address2": "서울 중구 동호로 249",
+      "naverMap": "https://map.naver.com/p/search/신라호텔+영빈관/place/18698760?c=15.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202507211941&locale=ko&svcName=map_pcv5&searchText=신라호텔+영빈관",
+      "location": [
+        {
+          "title": "지하철",
+          "desc": "동대입구역 5번 출구에서 도보 5분 (신라호텔 셔틀버스 이용)"
+        },
+        {
+          "title": "주차장",
+          "desc": "자체주차장 (총 1000대 수용가능)"
+        }
+      ]
+    },
+    "hostInfo": [
+      {
+        "host": "신랑측",
+        "accountInfo": [
+          {
+            "name": "김철호",
+            "relation": "신랑 아버지",
+            "bank": "농협",
+            "account": "000-000-000000"
+          },
+          {
+            "name": "김정숙",
+            "relation": "신랑 어머니",
+            "bank": "농협",
+            "account": "000-000-000000",
+            "kakaopayAccount": "",
+            "tossAccount": ""
+          },
+          {
+            "name": "김동연",
+            "relation": "신랑",
+            "bank": "국민",
+            "account": "943202-00-132949",
+            "kakaopayAccount": "",
+            "tossAccount": ""
+          }
+        ]
+      },
+      {
+        "host": "신부측",
+        "accountInfo": [
+          {
+            "name": "이XX",
+            "relation": "신부 아버지",
+            "bank": "국민",
+            "account": "000-000-000000",
+            "kakaopayAccount": "",
+            "tossAccount": ""
+          },
+          {
+            "name": "이XX",
+            "relation": "신부 어머니",
+            "bank": "국민",
+            "account": "000-000-000000",
+            "kakaopayAccount": "",
+            "tossAccount": ""
+          },
+          {
+            "name": "이XX",
+            "relation": "신부",
+            "bank": "국민",
+            "account": "000-000-000000",
+            "kakaopayAccount": "",
+            "tossAccount": ""
+          }
+        ]
+      }
+    ]
+  }
+}

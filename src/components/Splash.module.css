@@ -1,0 +1,99 @@
+
+@keyframes lds-heart {
+  0% { transform: scale(0.95); }
+  5% { transform: scale(1.1); }
+  39% { transform: scale(0.85); }
+  45% { transform: scale(1); }
+  60% { transform: scale(0.95); }
+  100% { transform: scale(0.9); }
+}
+
+
+.sp_theme_purple .splash {
+  transition: 0.5s opacity;
+}
+
+
+.sp_theme_purple .typing {
+  color: #ccc;
+  font-weight: 400;
+}
+
+
+.sp_theme_purple .lds-heart div,
+.sp_theme_purple .lds-heart div:before,
+.sp_theme_purple .lds-heart div:after {
+  background: #ddd;
+}
+
+.splash {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(4px);
+}
+
+.ct {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.daycard {
+  margin-top: 20px;
+  width: 100px;
+}
+
+.btext {
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.lds-heart {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  transform: rotate(45deg);
+  transform-origin: 20px 20px;
+}
+
+.lds-heart div {
+  top: 16px;
+  left: 16px;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #fdd;
+  animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.lds-heart div:after,
+.lds-heart div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: #fdd;
+}
+
+.lds-heart div:before {
+  left: -12px;
+  border-radius: 50% 0 0 50%;
+}
+
+.lds-heart div:after {
+  top: -12px;
+  border-radius: 50% 50% 0 0;
+}
