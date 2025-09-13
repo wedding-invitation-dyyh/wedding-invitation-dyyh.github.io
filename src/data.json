@@ -47,15 +47,15 @@
     "mapInfo": {
       "address1": "더링크 호텔 서울",
       "address2": "서울 구로구 경인로 610",
-      "naverMap": "https://naver.me/FqWtKQUF",
+      "naverMap": "https://map.naver.com/p/search/%EB%8D%94%EB%A7%81%ED%81%AC%20%ED%98%B8%ED%85%94/place/1070501110?c=15.00,0,0,0,dh&placePath=/home?entry=bmp&from=map&fromPanelNum=2&timestamp=202509130950&locale=ko&svcName=map_pcv5&searchText=%EB%8D%94%EB%A7%81%ED%81%AC%20%ED%98%B8%ED%85%94",
       "location": [
         {
           "title": "지하철",
-          "desc": "동대입구역 5번 출구에서 도보 5분 (신라호텔 셔틀버스 이용)"
+          "desc": "신도림역 도보 14분 (5분 간격 1번출구에서 셔틀 운영)\n구로역 3번출구 도보 7분"
         },
         {
           "title": "주차장",
-          "desc": "자체주차장 (총 1000대 수용가능)"
+          "desc": "1시간 30분 무료주차 (이후 15분 당 1,000원)\n주차장이 혼잡하오니 가급적 대중교통 이용을 추천드립니다."
         }
       ]
     },
@@ -64,18 +64,10 @@
         "host": "신랑측",
         "accountInfo": [
           {
-            "name": "김철호",
-            "relation": "신랑 아버지",
+            "name": "김철호, 김정숙",
+            "relation": "신랑 아버지, 어머니",
             "bank": "농협",
             "account": "000-000-000000"
-          },
-          {
-            "name": "김정숙",
-            "relation": "신랑 어머니",
-            "bank": "농협",
-            "account": "000-000-000000",
-            "kakaopayAccount": "",
-            "tossAccount": ""
           },
           {
             "name": "김동연",
@@ -91,7 +83,7 @@
         "host": "신부측",
         "accountInfo": [
           {
-            "name": "이XX",
+            "name": "도회송",
             "relation": "신부 아버지",
             "bank": "국민",
             "account": "000-000-000000",
@@ -99,7 +91,7 @@
             "tossAccount": ""
           },
           {
-            "name": "이XX",
+            "name": "허선주",
             "relation": "신부 어머니",
             "bank": "국민",
             "account": "000-000-000000",
@@ -107,7 +99,7 @@
             "tossAccount": ""
           },
           {
-            "name": "이XX",
+            "name": "도영흔",
             "relation": "신부",
             "bank": "국민",
             "account": "000-000-000000",
