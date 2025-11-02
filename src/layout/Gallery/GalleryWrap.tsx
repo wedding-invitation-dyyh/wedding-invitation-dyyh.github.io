@@ -35,6 +35,9 @@ const ContentsWrap = styled.div`
 
 const ImageMoreWrap = styled.div<{ isMoreView: boolean }>`
   position: relative;
+  width: 100%;
+  max-width: 1000px; /* 컨테이너 최대 너비(필요하면 조정) */
+  box-sizing: border-box;
   max-height: ${(props) =>
     props.isMoreView
       ? ""

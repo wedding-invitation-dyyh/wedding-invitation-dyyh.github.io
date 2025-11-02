@@ -42,10 +42,11 @@ const PhotoGallery = ({ id }: { id: string }) => {
   const smallItemStyles: React.CSSProperties = {
     cursor: "pointer",
     objectFit: "cover",
-    width: "130px",
-    height: "130px",
+    width: "100%",
+    height: "100%",
     borderRadius: "5px",
-    maxWidth: "fit-content"
+    display: "block",
+    backgroundColor: "#f2f2f2",
   };
 
   return (
@@ -53,8 +54,9 @@ const PhotoGallery = ({ id }: { id: string }) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 0fr)",
-          gridGap: 2,
+          gridTemplateColumns: "repeat(3, minmax(130px, 1fr))",
+          gridAutoRows: "130px",
+          gap: 8,
         }}
       >
         {imageSizes.map((image, index) => {
