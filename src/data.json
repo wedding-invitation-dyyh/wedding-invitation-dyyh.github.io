@@ -66,8 +66,8 @@
           {
             "name": "김철호, 김정숙",
             "relation": "신랑 아버지, 어머니",
-            "bank": "농협",
-            "account": "000-000-000000"
+            "bank": "기업",
+            "account": "600-022620-01-011"
           },
           {
             "name": "김동연",
@@ -85,8 +85,8 @@
           {
             "name": "도회송",
             "relation": "신부 아버지",
-            "bank": "국민",
-            "account": "000-000-000000",
+            "bank": "신한",
+            "account": "110-392-178524",
             "kakaopayAccount": "",
             "tossAccount": ""
           },
@@ -94,15 +94,15 @@
             "name": "허선주",
             "relation": "신부 어머니",
             "bank": "국민",
-            "account": "000-000-000000",
+            "account": "615801-04-277124",
             "kakaopayAccount": "",
             "tossAccount": ""
           },
           {
             "name": "도영흔",
             "relation": "신부",
-            "bank": "국민",
-            "account": "000-000-000000",
+            "bank": "우리",
+            "account": "1002-045-494771",
             "kakaopayAccount": "",
             "tossAccount": ""
           }

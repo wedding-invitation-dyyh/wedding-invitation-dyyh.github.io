@@ -12,16 +12,12 @@ export default defineConfig({
   base: "/",
   build: {
     outDir: 'dist',
-    rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, 'index.html'),
-      }
-    }
   },
-  plugins: [react(),
-  withReactRouter(),
-  tsconfigPaths(),
-  svgr(),
+  plugins: [
+    react(),
+    withReactRouter(),
+    tsconfigPaths(),
+    svgr(),
     {
       name: 'spa-fallback',
       configureServer(server) {
@@ -32,7 +28,7 @@ export default defineConfig({
           })
         );
       },
-      closeBundle: () => {
+      closeBundle() {
         const indexPath = path.resolve(__dirname, 'dist/index.html');
         const notFoundPath = path.resolve(__dirname, 'dist/404.html');
         if (fs.existsSync(indexPath)) {
@@ -40,7 +36,8 @@ export default defineConfig({
           console.log('✅ Copied index.html → 404.html for SPA fallback on GitHub Pages');
         }
       }
-    },],
+    },
+  ],
   resolve: {
     alias: [
       { find: "@components", replacement: "/src/components" },
