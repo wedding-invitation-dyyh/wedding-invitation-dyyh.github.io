@@ -66,6 +66,11 @@ const Main = ({font, id, props}: MainProp) => {
 
       <MainTitle font={font}>{title}</MainTitle>
       <SubTitle font={font}>{eventDetail}</SubTitle>
+      {eventDetail.includes("더링크호텔 3층 베일리 홀") && (
+        <EscalatorNotice font={font}>
+          ★ 1층에서 에스컬레이터를 이용하셔야 합니다! ★
+        </EscalatorNotice>
+      )}
     </div>
   );
 };
@@ -90,5 +95,13 @@ const SubTitle = styled.p<{font: string}>`
   line-height: 140%;
   margin-top: 10px;
   white-space: pre-line;
+  font-family: "${(props) => props.font}", "Noto Sans KR", "Apple SD Gothic Neo";
+`;
+
+const EscalatorNotice = styled.p<{font: string}>`
+  font-size: 0.75rem;
+  line-height: 140%;
+  margin-top: 5px;
+  color: #666;
   font-family: "${(props) => props.font}", "Noto Sans KR", "Apple SD Gothic Neo";
 `;
